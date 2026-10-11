@@ -11,4 +11,16 @@ if(f)f.onsubmit=e=>{e.preventDefault();const v=n=>f.elements[n].value.trim(),er=
 if(!v("nama")||!v("wa")||!v("unit")){er.textContent="Isi nama, nomor WhatsApp, dan alat yang diminati.";return}
 if(v("wa").replace(/\D/g,"").length<9){er.textContent="Nomor WhatsApp belum lengkap.";return}
 er.textContent="";
-open(wa(`Halo admin Bandar Alat, saya mau tanya harga & survey.\nNama: ${v("nama")}\nWA: ${v("wa")}\nAlat: ${v("unit")}\nLokasi proyek: ${v("kota")||"-"}\nKebutuhan: ${v("butuh")}\nRencana beli: ${v("rencana")}\nCatatan: ${v("cat")||"-"}`),"_blank","noopener")}})();
+open(wa(`Halo admin Bandar Alat, saya mau tanya harga & survey.\nNama: ${v("nama")}\nWA: ${v("wa")}\nAlat: ${v("unit")}\nLokasi proyek: ${v("kota")||"-"}\nKebutuhan: ${v("butuh")}\nRencana beli: ${v("rencana")}\nCatatan: ${v("cat")||"-"}`),"_blank","noopener")}
+const sw=document.querySelector(".sw");
+if(sw&&!matchMedia("(prefers-reduced-motion:reduce)").matches){
+sw.querySelectorAll(".cc").forEach(e=>{const n=e.cloneNode(true);n.classList.remove("rv");n.setAttribute("aria-hidden","true");n.tabIndex=-1;sw.append(n)});
+sw.classList.add("auto");
+let x=0,hold=false,vis=false,t;
+const pause=()=>{hold=true;clearTimeout(t)},resume=()=>{clearTimeout(t);t=setTimeout(()=>{x=sw.scrollLeft;hold=false},2200)};
+["touchstart","pointerdown","mouseenter","focusin"].forEach(v=>sw.addEventListener(v,pause,{passive:true}));
+["touchend","mouseleave","focusout"].forEach(v=>sw.addEventListener(v,resume,{passive:true}));
+new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(sw);
+const tick=()=>{if(vis&&!hold){x+=.6;const h=sw.scrollWidth/2;if(x>=h)x-=h;sw.scrollLeft=x}requestAnimationFrame(tick)};
+requestAnimationFrame(tick)}
+})();
