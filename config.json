@@ -1,0 +1,17 @@
+{
+  "brand": "Bandar Alat",
+  "site_url": "https://bandaralat.id",
+  "domain": "bandaralat.id",
+  "base": "",
+  "wa": "628815972233",
+  "address": "Cimanggu, Bogor, Jawa Barat",
+  "hours": "Atur jadwal kunjungan lewat admin",
+  "sheets": {
+    "excavator": "",
+    "mini-excavator": "",
+    "dump-truck": "",
+    "dozer": "",
+    "vibro-roller": "",
+    "lainnya": ""
+  }
+}
